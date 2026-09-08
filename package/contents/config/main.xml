@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="Image" type="String"><default></default></entry>
+    <entry name="GlassOpacity" type="Int"><default>100</default><min>0</min><max>100</max></entry>
+    <entry name="TileSize" type="Int"><default>112</default><min>40</min><max>240</max></entry>
+    <entry name="InfluenceRadius" type="Int"><default>310</default><min>80</min><max>700</max></entry>
+    <entry name="Refraction" type="Int"><default>65</default><min>0</min><max>100</max></entry>
+    <entry name="Frost" type="Int"><default>60</default><min>0</min><max>100</max></entry>
+    <entry name="IdleStrength" type="Int"><default>6</default><min>0</min><max>100</max></entry>
+    <entry name="FollowDuration" type="Int"><default>0</default><min>0</min><max>600</max></entry>
+    <entry name="MotionEnabled" type="Bool"><default>true</default></entry>
+  </group>
+</kcfg>

@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Liquid Glass Tiles 0.2.0\n"
+"PO-Revision-Date: 2026-09-08 00:00+0000\n"
+"Last-Translator: veexiwang\n"
+"Language-Team: Simplified Chinese\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Wallpaper image:"
+msgstr "壁纸图片："
+
+msgid "Built-in demo, or choose a local image"
+msgstr "使用内置演示图，或选择本地图片"
+
+msgid "Choose…"
+msgstr "选择…"
+
+msgid "Use demo"
+msgstr "使用演示图"
+
+msgid "Glass opacity (0 = transparent):"
+msgstr "玻璃显现强度（0 为全透明）："
+
+msgid "Tile size (px):"
+msgstr "方块大小（像素）："
+
+msgid "Mouse radius (px):"
+msgstr "鼠标影响范围（像素）："
+
+msgid "Refraction strength:"
+msgstr "折射强度："
+
+msgid "Frost strength:"
+msgstr "磨砂程度："
+
+msgid "Glass away from cursor:"
+msgstr "远处方块显现强度："
+
+msgid "Follow delay (ms, 0 = immediate):"
+msgstr "跟随延迟（毫秒，0 为立即跟随）："
+
+msgid "Mouse interaction:"
+msgstr "鼠标交互："
+
+msgid "Enabled"
+msgstr "启用"
+
+msgid "The effect fades when the pointer leaves the desktop. Zero opacity restores the original image."
+msgstr "鼠标移出桌面后效果淡去。显现强度为 0 时显示原图。"
+
+msgid "Original visual concept"
+msgstr "原始视觉创意"
+
+msgid "Shared with the original designer's permission."
+msgstr "经原设计师同意分享。"
+
+msgid "Portfolio"
+msgstr "设计主页"
+
+msgid "Original work"
+msgstr "原始作品"
+
+msgid "Choose wallpaper"
+msgstr "选择壁纸"
+
+msgid "Images (*.png *.jpg *.jpeg *.webp *.bmp *.svg)"
+msgstr "图片 (*.png *.jpg *.jpeg *.webp *.bmp *.svg)"
+
+msgid "Cannot read this image. Choose another wallpaper in settings."
+msgstr "无法读取图片，请在设置中重新选择壁纸。"
+
+msgid "Choose a local wallpaper in settings."
+msgstr "请在设置中选择本地壁纸图片。"
