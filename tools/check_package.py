@@ -15,7 +15,7 @@ with zipfile.ZipFile(archive) as bundle:
     names = bundle.namelist()
     assert len(names) == len(set(names)), 'Duplicate archive entries'
     required = ['metadata.json', 'contents/ui/main.qml', 'contents/ui/config.qml',
-                'contents/ui/Glass.qml', 'contents/config/main.xml',
+                'contents/ui/Glass.qml', 'contents/ui/FadingImage.qml', 'contents/ui/Slideshow.qml', 'contents/ui/Playlist.js', 'contents/ui/Translations.js', 'contents/ui/Catalogs.js', 'contents/config/main.xml',
                 'contents/shaders/glass.frag.qsb', 'contents/shaders/blur.frag.qsb',
                 'contents/images/demo.svg', 'LICENSE', 'CREDITS.md']
     assert all(name in names for name in required), 'Missing runtime files'

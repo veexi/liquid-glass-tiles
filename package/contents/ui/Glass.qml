@@ -20,11 +20,21 @@ Item {
     property bool testPointer: false
     property point testPosition: Qt.point(width * 0.5, height * 0.5)
     readonly property bool imageFailed: backdrop.status === Image.Error
-    readonly property bool imageReady: backdrop.status === Image.Ready
+    readonly property bool imageReady: backdrop.activeIndex >= 0
     readonly property point hoverPosition: hover.parent ? glass.mapFromItem(hover.parent, hover.point.position.x, hover.point.position.y) : Qt.point(0, 0)
-    property real pointerX: testPointer ? testPosition.x : (hover.hovered ? hoverPosition.x : width / 2)
-    property real pointerY: testPointer ? testPosition.y : (hover.hovered ? hoverPosition.y : height / 2)
-    property real presence: (testPointer || hover.hovered) && motionEnabled ? 1 : 0
+    property point lastPosition: Qt.point(width / 2, height / 2)
+    property bool hasPosition: false
+    function rememberPointer() {
+        if (hover.hovered && hoverPosition.x >= 0 && hoverPosition.y >= 0
+                && hoverPosition.x < width && hoverPosition.y < height) {
+            lastPosition = hoverPosition;
+            hasPosition = true;
+        }
+    }
+    onHoverPositionChanged: rememberPointer()
+    property real pointerX: testPointer ? testPosition.x : lastPosition.x
+    property real pointerY: testPointer ? testPosition.y : lastPosition.y
+    property real presence: (testPointer || hasPosition) && motionEnabled ? 1 : 0
     Behavior on pointerX { enabled: glass.followDuration > 0; SmoothedAnimation { duration: glass.followDuration; velocity: -1 } }
     Behavior on pointerY { enabled: glass.followDuration > 0; SmoothedAnimation { duration: glass.followDuration; velocity: -1 } }
     Behavior on presence { NumberAnimation { duration: 420; easing.type: Easing.InOutQuad } }
@@ -37,13 +47,10 @@ Item {
             GradientStop { position: 1; color: "#c2b79c" }
         }
     }
-    Image {
+    FadingImage {
         id: backdrop
         anchors.fill: parent
         source: glass.localImage ? glass.wallpaper : ""
-        fillMode: Image.PreserveAspectCrop
-        asynchronous: true
-        autoTransform: true
         sourceSize.width: Math.min(4096, Math.max(1, glass.width * Screen.devicePixelRatio))
         sourceSize.height: Math.min(4096, Math.max(1, glass.height * Screen.devicePixelRatio))
     }
@@ -115,6 +122,7 @@ Item {
         z: 1000000
         HoverHandler {
             id: hover
+            onHoveredChanged: glass.rememberPointer()
             target: null
             acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
             blocking: false

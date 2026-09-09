@@ -1,0 +1,42 @@
+.pragma library
+// Generated from translations/*.po by tools/build.py.
+var messages = {
+  "zh_CN": {
+    "Add images…": "添加图片…",
+    "Add slideshow images": "添加轮播图片",
+    "All files (*)": "所有文件 (*)",
+    "Built-in demo, or choose a local image": "使用内置演示图，或选择本地图片",
+    "Cannot read this image. Choose another wallpaper in settings.": "无法读取图片，请在设置中重新选择壁纸。",
+    "Choose a local wallpaper in settings.": "请在设置中选择本地壁纸图片。",
+    "Choose wallpaper": "选择壁纸",
+    "Choose…": "选择…",
+    "Clear list": "清空列表",
+    "Enabled": "启用",
+    "Follow delay (ms, 0 = immediate):": "跟随延迟（毫秒，0 为立即跟随）：",
+    "Follow system": "跟随系统",
+    "Frost strength:": "磨砂程度：",
+    "Glass away from cursor:": "远处方块显现强度：",
+    "Glass opacity (0 = transparent):": "玻璃显现强度（0 为全透明）：",
+    "Images (*.png *.jpg *.jpeg *.webp *.bmp *.svg)": "图片 (*.png *.jpg *.jpeg *.webp *.bmp *.svg)",
+    "Language:": "语言：",
+    "Mix static image formats. Unreadable images are skipped. An empty list uses the single wallpaper.": "支持混合静态图片格式，无法读取的图片会跳过。列表为空时使用单张壁纸。",
+    "Mouse interaction:": "鼠标交互：",
+    "Mouse radius (px):": "鼠标影响范围（像素）：",
+    "Original visual concept": "原始视觉创意",
+    "Original work": "原始作品",
+    "Playback order:": "播放顺序：",
+    "Portfolio": "设计主页",
+    "Random (otherwise list order)": "随机播放（关闭则按列表顺序）",
+    "Refraction strength:": "折射强度：",
+    "Remove": "移除",
+    "Selected images:": "已选图片：",
+    "Shared with the original designer's permission.": "经原设计师同意分享。",
+    "Slideshow:": "壁纸轮播：",
+    "Switch interval (seconds):": "切换间隔（秒）：",
+    "The effect fades when the pointer leaves the desktop. Zero opacity restores the original image.": "鼠标移出桌面后效果淡去。显现强度为 0 时显示原图。",
+    "The glass stays at the last position when the pointer leaves the desktop. Zero opacity restores the original image.": "鼠标离开桌面时，玻璃停留在最后位置。显现强度为 0 时显示原图。",
+    "Tile size (px):": "方块大小（像素）：",
+    "Use demo": "使用演示图",
+    "Wallpaper image:": "壁纸图片："
+  }
+};

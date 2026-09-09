@@ -11,10 +11,10 @@ Shared with the original designer's permission. [X](https://x.com/DesignGabor) �
 
 ## Install
 
-Download the **installation ZIP**, `liquid-glass-tiles-0.2.0.zip`, then run:
+Download the **installation ZIP**, `liquid-glass-tiles-0.3.1.zip`, then run:
 
 ```sh
-kpackagetool6 --type Plasma/Wallpaper --install liquid-glass-tiles-0.2.0.zip
+kpackagetool6 --type Plasma/Wallpaper --install liquid-glass-tiles-0.3.1.zip
 ```
 
 Right-click the desktop → **Configure Desktop and Wallpaper** → choose **Liquid Glass Tiles** as the wallpaper type → Apply. It includes an original demo background; choose your own local image in settings.
@@ -22,6 +22,14 @@ Right-click the desktop → **Configure Desktop and Wallpaper** → choose **Liq
 Where the wallpaper settings offer **Get New Plugins → Install from File**, the same installation ZIP can be used. This package is a wallpaper plugin, not a desktop widget or Global Theme.
 
 Runtime requirements: Plasma 6 and its Qt Quick / Kirigami components, with GPU shader support. No Python, Spline account, browser, background service, network access or system-package modification is needed to run the installed plugin.
+
+## Slideshow
+
+Enable Slideshow in wallpaper settings, add multiple local images, set the interval in seconds, then Apply. PNG, JPG/JPEG, WebP, BMP and SVG can be mixed when supported by Qt's image plugins. Selection order is used by default; random mode avoids immediately choosing the same entry. Remove individual entries or clear the list in settings.
+
+Unreadable images are skipped. An empty list uses the single wallpaper (or bundled demo). If all entries fail, the last successfully displayed image is retained, or the single wallpaper/demo if none loaded; playback stops until settings change. Animated playback is not supported. Images crossfade over 0.5 seconds after the next image is ready.
+
+The glass stays at the last desktop pointer position when the pointer moves over a panel or another window, and resumes tracking when it returns.
 
 ## Settings
 
@@ -36,12 +44,12 @@ Runtime requirements: Plasma 6 and its Qt Quick / Kirigami components, with GPU 
 | Follow delay | 0 gives immediate tracking; higher values add deliberate smoothing |
 | Mouse interaction | Enable or disable pointer response |
 
-Settings are available in English and Simplified Chinese. Original-designer credits and links are also included in the settings page.
+Settings are available in English and Simplified Chinese. Use Language to follow the system or explicitly choose 简体中文 / English. Translations are bundled and work without a global locale installation. Original-designer credits and links are also included in the settings page.
 
 ## Update / uninstall
 
 ```sh
-kpackagetool6 --type Plasma/Wallpaper --upgrade liquid-glass-tiles-0.2.0.zip
+kpackagetool6 --type Plasma/Wallpaper --upgrade liquid-glass-tiles-0.3.1.zip
 ```
 
 Plasma can retain loaded QML after a plugin update. If an update still behaves like the old version, log out and back in after saving your work.
@@ -87,3 +95,5 @@ The offscreen OpenGL test still needs an available GL context (for example an X1
 ## License
 
 Implementation and included original demo artwork: [MIT](LICENSE). The original Spline work is credited as design inspiration and is not included or relicensed. See [CREDITS.md](CREDITS.md).
+
+After upgrading, save your work and log out and back in if new options are missing, settings do not persist, or old behavior remains. Closing the settings window alone may not reload cached QML, translations and configuration schemas. The plugin never restarts your desktop automatically.

@@ -9,10 +9,10 @@
 
 ## 安装
 
-下载安装包 `liquid-glass-tiles-0.2.0.zip`，然后运行：
+下载安装包 `liquid-glass-tiles-0.3.1.zip`，然后运行：
 
 ```sh
-kpackagetool6 --type Plasma/Wallpaper --install liquid-glass-tiles-0.2.0.zip
+kpackagetool6 --type Plasma/Wallpaper --install liquid-glass-tiles-0.3.1.zip
 ```
 
 桌面右键 → **配置桌面和壁纸** → 壁纸类型选择 **液态玻璃方格** → 应用。
@@ -34,7 +34,7 @@ kpackagetool6 --type Plasma/Wallpaper --install liquid-glass-tiles-0.2.0.zip
 ## 更新与卸载
 
 ```sh
-kpackagetool6 --type Plasma/Wallpaper --upgrade liquid-glass-tiles-0.2.0.zip
+kpackagetool6 --type Plasma/Wallpaper --upgrade liquid-glass-tiles-0.3.1.zip
 ```
 
 Plasma 可能缓存已加载的代码。更新后若仍表现为旧版，可保存工作后注销、重新登录。
@@ -59,3 +59,15 @@ kpackagetool6 --type Plasma/Wallpaper --remove io.github.veexiwang.liquidglassti
 构建、测试与源码说明见 [English README](README.md)。
 
 实现和原创演示背景采用 [MIT 许可证](LICENSE)。原作的 Spline 场景、模型、运行库及素材未包含在本项目中。
+
+语言设置支持“跟随系统 / 简体中文 / English”，切换立即预览，点击应用保存。翻译随插件加载，无需另装系统翻译文件。
+
+## 壁纸轮播
+
+开启轮播后添加多张本地图片，设置间隔（秒），点击应用。支持混合 PNG、JPG/JPEG、WebP、BMP、SVG（取决于 Qt 图片插件）。默认按列表顺序，也可随机播放，避免连续重复同一项。支持移除单张或清空列表。暂不播放动图；下一张加载完成后，进行约 0.5 秒淡入淡出。
+
+坏图自动跳过；空列表使用单张壁纸或内置演示图。全部失败时保留最后成功图片（尚未成功则使用单张壁纸或演示图），停止轮播直到修改设置。
+
+鼠标移到任务栏或其他窗口时，玻璃停留在最后位置；回到桌面后继续跟随。
+
+升级后如果新增选项未出现、设置无法保存或仍是旧效果，请保存工作，注销并重新登录。仅关闭设置窗口可能无法刷新 QML、翻译和配置结构缓存。插件不会自动重启桌面。

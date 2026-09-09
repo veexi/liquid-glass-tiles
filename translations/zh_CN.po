@@ -75,3 +75,45 @@ msgstr "无法读取图片，请在设置中重新选择壁纸。"
 
 msgid "Choose a local wallpaper in settings."
 msgstr "请在设置中选择本地壁纸图片。"
+
+msgid "Language:"
+msgstr "语言："
+
+msgid "Follow system"
+msgstr "跟随系统"
+
+msgid "Slideshow:"
+msgstr "壁纸轮播："
+
+msgid "Add images…"
+msgstr "添加图片…"
+
+msgid "Clear list"
+msgstr "清空列表"
+
+msgid "Selected images:"
+msgstr "已选图片："
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Switch interval (seconds):"
+msgstr "切换间隔（秒）："
+
+msgid "Playback order:"
+msgstr "播放顺序："
+
+msgid "Random (otherwise list order)"
+msgstr "随机播放（关闭则按列表顺序）"
+
+msgid "Mix static image formats. Unreadable images are skipped. An empty list uses the single wallpaper."
+msgstr "支持混合静态图片格式，无法读取的图片会跳过。列表为空时使用单张壁纸。"
+
+msgid "The glass stays at the last position when the pointer leaves the desktop. Zero opacity restores the original image."
+msgstr "鼠标离开桌面时，玻璃停留在最后位置。显现强度为 0 时显示原图。"
+
+msgid "Add slideshow images"
+msgstr "添加轮播图片"
+
+msgid "All files (*)"
+msgstr "所有文件 (*)"

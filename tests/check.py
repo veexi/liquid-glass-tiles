@@ -67,6 +67,13 @@ try:
     right = frame('test-right')
     assert abs(glass.property('pointerX') - 1000) < 2, 'MOUSE_FOLLOW_FAILED'
     assert difference(left, right, 0.65, 0.3, 0.85, 0.7) > 2, 'EFFECT_DID_NOT_MOVE'
+    # Leaving the desktop must retain both the position and visible effect.
+    held = (glass.property('pointerX'), glass.property('pointerY'))
+    QGuiApplication.sendEvent(window, QEvent(QEvent.Leave))
+    QTest.qWait(650)
+    assert (glass.property('pointerX'), glass.property('pointerY')) == held, 'LEAVE_POSITION_JUMP'
+    assert glass.property('presence') > 0.99, 'LEAVE_EFFECT_DISAPPEARED'
+    move_mouse(1000, 400)
     overlay = window.findChild(QObject, 'desktopOverlay')
     if overlay is not None:
         for button, name in [(Qt.LeftButton, 'leftClicks'), (Qt.RightButton, 'rightClicks')]:
@@ -116,6 +123,25 @@ try:
     QTest.qWait(1000)
     assert len(idleFrames) <= 2, ('IDLE_RENDER_LOOP', len(idleFrames))
     print(f'IDLE_PASS: {len(idleFrames)} rendered frames during 1 second at rest')
+    # Crossfade must include intermediate pixels and keep the glass pointer fixed.
+    glass.setProperty('glassOpacity', 0)
+    for name, color in [('red', 'red'), ('blue', 'blue')]:
+        solid = QImage(128, 128, QImage.Format_RGB32)
+        solid.fill(QColor(color))
+        solid.save(str(output / (name + '.png')))
+    glass.setProperty('wallpaper', QUrl.fromLocalFile(str(output / 'red.png')))
+    QTest.qWait(800)
+    held = (glass.property('pointerX'), glass.property('pointerY'))
+    glass.setProperty('wallpaper', QUrl.fromLocalFile(str(output / 'blue.png')))
+    samples = []
+    for _ in range(15):
+        QTest.qWait(50)
+        pixel = window.grabWindow().pixelColor(50, 50)
+        samples.append((pixel.red(), pixel.blue()))
+    assert any(30 < red < 225 and 30 < blue < 225 for red, blue in samples), ('NO_CROSSFADE', samples)
+    assert samples[-1][1] > 245 and samples[-1][0] < 10, ('FADE_INCOMPLETE', samples)
+    assert held == (glass.property('pointerX'), glass.property('pointerY')), 'FADE_MOVED_POINTER'
+    print('CROSSFADE_PASS: intermediate colors, final image, stable pointer')
     glass.setProperty('wallpaper', QUrl.fromLocalFile('/nonexistent/liquid-glass-test.png'))
     QTest.qWait(500)
     assert glass.property('imageFailed'), 'MISSING_IMAGE_NOT_REPORTED'

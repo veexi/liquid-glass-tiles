@@ -1,5 +1,6 @@
 """Bake portable Qt shaders and create deterministic installation/source archives."""
 from pathlib import Path
+import gettext
 import hashlib
 import json
 import os
@@ -21,10 +22,20 @@ for shader in sorted((PACKAGE / 'contents/shaders').glob('*.frag')):
     # Bake the older container format instead of requiring the builder's Qt minor version.
     subprocess.run([qsb, '--qt6', '--qsbversion', '64', '-o', str(relative) + '.qsb', str(relative)], cwd=ROOT, check=True)
 domain = 'plasma_wallpaper_' + metadata['Id']
+catalogs = {}
 for po in sorted((ROOT / 'translations').glob('*.po')):
     destination = PACKAGE / 'contents/locale' / po.stem / 'LC_MESSAGES' / (domain + '.mo')
     destination.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(['msgfmt', '--check', '-o', str(destination), str(po)], check=True)
+    with destination.open('rb') as compiled:
+        catalog = gettext.GNUTranslations(compiled)
+    catalogs[po.stem] = {key: value for key, value in catalog._catalog.items()
+                         if isinstance(key, str) and key}
+# Wallpaper config windows do not reliably register package-local gettext paths.
+# Bundle the same PO translations for direct QML use; no global locale install.
+(PACKAGE / 'contents/ui/Catalogs.js').write_text(
+    '.pragma library\n// Generated from translations/*.po by tools/build.py.\nvar messages = '
+    + json.dumps(catalogs, ensure_ascii=False, sort_keys=True, indent=2) + ';\n')
 for name in ('LICENSE', 'CREDITS.md'):
     shutil.copyfile(ROOT / name, PACKAGE / name)
 dist = ROOT / 'dist'
